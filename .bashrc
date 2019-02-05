@@ -18,8 +18,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=10000
-HISTFILESIZE=200000
+HISTSIZE=
+HISTFILESIZE=
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -124,10 +124,9 @@ shopt -s cdable_vars
 
 alias r='ranger'
 alias f='firefox'
-alias ref="shortcuts >/dev/null ; source ~/.bashrc"
 alias ref="source ~/.bashrc"
-alias ytu='youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best'  --add-metadata -i'
-
+alias ytv='youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best'  --add-metadata -i'
+alias yta="youtube-dl -f bestaudio[ext=mp4]/best" # Download only audio
 
 export ctf="/home/tom/googleCTF"
 export VISUAL=vim
