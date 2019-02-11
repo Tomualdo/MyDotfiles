@@ -1,9 +1,7 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
-
 set -o vi
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -18,8 +16,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=
-HISTFILESIZE=
+HISTSIZE=1000
+HISTFILESIZE=2000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -59,8 +57,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
- PS1='${debian_chroot:+($debian_chroot)}\[\033[01;33m\]\u@\[\033[32m\]\h:\[\033[01;34m\]\w\[\033[31m\]\$\[\033[00m\] '
-   # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -119,19 +116,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
-shopt -s autocd
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u \[\033[30m\]\A \h\[\033[33m\]:\[\033[01;31m\]\w\[\033[32m\]\$ \[\033[00m\]'
 shopt -s cdable_vars
-
+export ctf="/home/tom/Documents/googleCTF"
+export john="/home/tom/Downloads/JohnTheRipper/run"
 alias r='ranger'
-alias f='firefox'
-alias ref="source ~/.bashrc"
-alias ytv='youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best'  --add-metadata -i'
-alias yta="youtube-dl -f bestaudio[ext=mp4]/best" # Download only audio
-
-export ctf="/home/tom/googleCTF"
-export VISUAL=vim
-export EDITOR="$VISUAL"
-
-function mkd() { 
-    mkdir -p "$@" && cd "$_";
-}
+alias x='xsel'
+alias ref='source ~/.bashrc'
+alias gitall='find . -name ".git" -type d | xargs -P10 -I{} git --git-dir={} pull'
