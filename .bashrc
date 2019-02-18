@@ -119,6 +119,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
+export PYTHONSTARTUP=~/.pythonrc
+
 shopt -s autocd
 shopt -s cdable_vars
 
