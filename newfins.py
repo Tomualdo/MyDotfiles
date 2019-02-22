@@ -36,13 +36,14 @@ def process(mrc,src,mem,mem_s1,mem_s2,mem_s3,mem_e1,mem_e2,debug):
 	cli = (response[19])
 	srv = (response[23])
 
-	finsCommand = (b'FINS\x00\x00\x00\x1a\x00\x00\x00\x02\x00\x00\x00\x00')
+	finsCommand = (b'FINS\x00\x00\x00\x1e\x00\x00\x00\x02\x00\x00\x00\x00')
 #						 \length		 \command		 \errcode		 \
 
 	finsCommandFrame = list(b'\x80\x00\x02\x00\x01\x00\x00\x00\x00\x00\x00\x00\x82\x00\x00\x00\x00\x00')
-	#finsCommandFrame = list(b'\x80\x00\x02\x00\x01\x00\x00\x00\x00\x01\x00\x00\x82\x00\x00\x00\x0F\xff')
+	#finsCommandFrame = list(b'\x80\x00\x02\x00\x01\x00\x00\x00\x00\x01\x00\x00\x82\x00\x00\x00\x0F\xff'\t\o\t\o\)
 	#							0	1	2	3	4	5	6	7	8	9	10	11	12	13	14	15	16	17
-	#																	MRC	SRC	MEM	M_S			M_E			
+	#																	MRC	SRC	MEM	M_S			M_E	1a\1b\1c\1d\1e\20\21		
+	#																	MRC	SRC	MEM	M_S			M_E	\18\19\20\21\22\23\24		
 	finsCommandFrame[7]=chr(cli)
 	finsCommandFrame[4]=chr(srv)
 	
@@ -64,7 +65,7 @@ def process(mrc,src,mem,mem_s1,mem_s2,mem_s3,mem_e1,mem_e2,debug):
 	finsCommandFrame[16]=chr(mem_e1)
 	finsCommandFrame[17]=chr(mem_e2)
 
-	test = ('TOM')
+	test = ('TOMA')
 	test = list(test)
 	finsCommandFrame.extend(test)
 	
