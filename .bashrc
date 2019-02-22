@@ -119,6 +119,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
+export PYTHONSTARTUP=~/.pythonrc
+
 shopt -s autocd
 shopt -s cdable_vars
 
@@ -127,6 +129,8 @@ alias f='firefox'
 alias ref="source ~/.bashrc"
 alias ytv='youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best'  --add-metadata -i'
 alias yta="youtube-dl -f bestaudio[ext=mp4]/best" # Download only audio
+alias gitall='find . -name ".git" -type d | xargs -P10 -I{} git --git-dir={} pull'
+
 
 export ctf="/home/tom/googleCTF"
 export VISUAL=vim
